@@ -12,4 +12,11 @@ public class MoldType {
     public Identifier getIdentifier() {
         return this.identifier;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof MoldType)) return false;
+
+        return (this.identifier.equals(((MoldType) obj).identifier));
+    }
 }

@@ -12,8 +12,8 @@ public class Workshop implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		WorkshopItems.init();
-		WorkshopBlocks.init();
 		WorkshopMoldItems.init();
+		WorkshopBlocks.init();
 	}
 
 	public static Identifier id(String path) {

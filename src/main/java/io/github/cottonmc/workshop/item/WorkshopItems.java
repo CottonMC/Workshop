@@ -41,7 +41,8 @@ public class WorkshopItems {
 	//misc
 	public static Item STONE_TONGS;
 
-	public static ItemGroup WORKSHOP_GROUP = FabricItemGroupBuilder.build(new Identifier(Workshop.MODID, "main_group"), () -> new ItemStack(GRASS_ROPE));
+	public static final ItemGroup WORKSHOP_GROUP = FabricItemGroupBuilder.build(Workshop.id("main_group"), () -> new ItemStack(GRASS_ROPE));
+	public static final ItemGroup WORKSHOP_MOLDS_GROUP = FabricItemGroupBuilder.build(Workshop.id("mold_group"), () -> new ItemStack(WorkshopMoldItems.WET_AXE_HEAD));
 
 	public static void init() {
 		GRASS_BLADES = register("grass_blades", new Item(defaultSettings()));
@@ -89,8 +90,11 @@ public class WorkshopItems {
 		return new Item.Settings().group(WORKSHOP_GROUP);
 	}
 
-	public static Item register(String name, Item item) {
-		Registry.register(Registry.ITEM, new Identifier(Workshop.MODID, name), item);
-		return item;
+	public static Item register(String path, Item item) {
+		return Registry.register(Registry.ITEM, Workshop.id(path), item);
+	}
+
+	public static Item.Settings moldSettings() {
+		return new Item.Settings().group(WORKSHOP_MOLDS_GROUP);
 	}
 }

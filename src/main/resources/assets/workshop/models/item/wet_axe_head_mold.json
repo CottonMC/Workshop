@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "workshop:item/wet_axe_head_mold"
+  }
+}

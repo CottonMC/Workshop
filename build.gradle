@@ -38,11 +38,11 @@ dependencies {
     
     modCompile "io.github.cottonmc:LibGui:1.3.1"
 	modImplementation ("com.github.siphalor:nbt-crafting:1.2.1") {transitive=false}
-	modImplementation curse.resolve("metatips", 2755573)
+	//modImplementation curse.resolve("https://curseforge.com/minecraft/mc-mods/metatips/") // MetaTips
+
 
 	implementation "com.google.code.findbugs:jsr305:3.0.2"
 }
-
 processResources {
 	inputs.property "version", project.version
 	from(sourceSets.main.resources.srcDirs) {
