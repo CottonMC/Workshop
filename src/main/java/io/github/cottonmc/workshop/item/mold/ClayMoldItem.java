@@ -1,12 +1,12 @@
-package io.github.cottonmc.workshop.item;
+package io.github.cottonmc.workshop.item.mold;
 
 import io.github.cottonmc.workshop.item.mold.MoldType;
 import net.minecraft.item.Item;
 
-public class WetMoldItem extends Item {
+public class ClayMoldItem extends Item {
     private final MoldType type;
 
-    public WetMoldItem(MoldType type, Item.Settings itemSettings) {
+    public ClayMoldItem(MoldType type, Item.Settings itemSettings) {
         super(itemSettings);
         this.type = type;
     }

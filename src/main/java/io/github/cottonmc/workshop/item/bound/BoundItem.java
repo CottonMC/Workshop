@@ -1,11 +1,11 @@
-package io.github.cottonmc.workshop.item;
+package io.github.cottonmc.workshop.item.bound;
 
 import io.github.cottonmc.workshop.Workshop;
 import io.github.cottonmc.workshop.binding.BindingPropertyGetter;
 import net.minecraft.item.Item;
 
-public class TongsItem extends Item {
-	public TongsItem(Settings settings) {
+public class BoundItem extends Item {
+	public BoundItem(Settings settings) {
 		super(settings);
 		this.addPropertyGetter(Workshop.id("binding"), BindingPropertyGetter.INSTANCE);
 	}

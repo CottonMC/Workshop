@@ -1,5 +1,6 @@
 package io.github.cottonmc.workshop.item.mold;
 
+import com.google.common.collect.ImmutableMap;
 import io.github.cottonmc.workshop.Workshop;
 import net.minecraft.util.Identifier;
 
@@ -46,6 +47,16 @@ public class MoldTypes {
     public static final MoldType WARHAMMER_HEAD = register(new MoldType(Workshop.id("warhammer_head")));
 
     public static MoldType register(MoldType type) {
+        if(Workshop.isLocked()) {
+            throw new UnsupportedOperationException("Cannot register new MoldTypes after game is loaded.");
+        }
+
         return moldTypes.put(type.getIdentifier(), type);
+    }
+
+    public static void init() {}
+
+    public static Map<Identifier, MoldType> getRegistered() {
+        return ImmutableMap.copyOf(moldTypes);
     }
 }

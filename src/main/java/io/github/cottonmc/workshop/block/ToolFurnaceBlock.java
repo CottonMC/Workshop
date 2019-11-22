@@ -109,8 +109,8 @@ public class ToolFurnaceBlock extends Block implements BlockEntityProvider, Inve
 			BlockEntity be = world.getBlockEntity(pos);
 			if (be instanceof ToolFurnaceBlockEntity) {
 				ContainerProviderRegistry.INSTANCE.openContainer(
-						new Identifier(Workshop.MODID, "tool_furnace"),
-						player, (buf)-> buf.writeBlockPos(pos));
+						Workshop.id("tool_furnace"),
+						player, (buf) -> buf.writeBlockPos(pos));
 			}
 		}
 		return true;
