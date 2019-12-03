@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BindingTypes {
+public final class BindingTypes {
     private static final Map<Identifier, BindingType> bindingTypes = new HashMap<>();
 
     public static final BindingType GRASS_ROPE = BindingTypes.register(new BindingType(Workshop.id("grass_rope"), ColorPalettes.GRASS_ROPE));

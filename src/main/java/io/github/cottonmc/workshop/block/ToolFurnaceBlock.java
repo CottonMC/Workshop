@@ -7,9 +7,10 @@ import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateFactory;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -19,7 +20,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.ViewableWorld;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.World;
 import io.github.cottonmc.workshop.Workshop;
 import io.github.cottonmc.workshop.block.entity.ToolFurnaceBlockEntity;
@@ -31,11 +32,11 @@ public class ToolFurnaceBlock extends Block implements BlockEntityProvider, Inve
 	
 	public ToolFurnaceBlock(Block.Settings settings) {
 		super(settings);
-		getStateFactory().getDefaultState().with(FACING, Direction.NORTH);
+		getStateManager().getDefaultState().with(FACING, Direction.NORTH);
 	}
 	
 	@Override
-	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory) {
+	protected void appendProperties(StateManager.Builder<Block, BlockState> stateFactory) {
 		stateFactory.add(FACING);
 	}
 
@@ -104,7 +105,7 @@ public class ToolFurnaceBlock extends Block implements BlockEntityProvider, Inve
 	}
 
 	@Override
-	public boolean activate(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
 		if (!world.isClient) {
 			BlockEntity be = world.getBlockEntity(pos);
 			if (be instanceof ToolFurnaceBlockEntity) {
@@ -113,7 +114,7 @@ public class ToolFurnaceBlock extends Block implements BlockEntityProvider, Inve
 						player, (buf) -> buf.writeBlockPos(pos));
 			}
 		}
-		return true;
+		return ActionResult.SUCCESS;
 	}
 
 	@Override
@@ -136,7 +137,7 @@ public class ToolFurnaceBlock extends Block implements BlockEntityProvider, Inve
 	}
 
 	@Override
-	public boolean canPlaceAt(BlockState state, ViewableWorld world, BlockPos pos) {
+	public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
 		//TODO: support for more blocker locations
 		return world.getBlockState(pos.up()).isAir();
 	}

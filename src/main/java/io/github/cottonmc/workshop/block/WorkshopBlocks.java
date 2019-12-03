@@ -1,15 +1,12 @@
 package io.github.cottonmc.workshop.block;
 
 import io.github.cottonmc.workshop.Workshop;
-import io.github.cottonmc.workshop.controller.ToolFurnaceController;
 import io.github.cottonmc.workshop.item.WorkshopItems;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.api.tools.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
-import net.minecraft.container.BlockContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.registry.Registry;
 
@@ -18,7 +15,7 @@ public class WorkshopBlocks {
 	public static Block BLOCKER = Registry.register(Registry.BLOCK, Workshop.id("blocker"), new BlockerBlock(FabricBlockSettings.of(Material.STONE).noCollision().dropsNothing().strength(3.5f, 3.5f).build()));
 
     /** This block is for making molds. */
-    public static final Block MOLD_TABLE = register("moldtable", new MoldTableBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).build()));
+    public static final Block MOLD_TABLE = register("moldtable", new MoldTableBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).nonOpaque().build()));
     
     /** These blocks are for crafting tool parts and materials. */
     //public static final Block WOOD_CUTTING_TABLE = new Block(Block.Settings.copy(MOLD_TABLE));
@@ -32,11 +29,6 @@ public class WorkshopBlocks {
     //public static final Block METAL_ANVIL = new Block(Block.Settings.copy(Blocks.ANVIL));
 
 	public static void init() {
-		ContainerProviderRegistry.INSTANCE.registerFactory(
-				Workshop.id("tool_furnace"),
-				(syncId, id, player, buf) ->
-						new ToolFurnaceController(syncId, player.inventory,
-								BlockContext.create(player.world, buf.readBlockPos())));
     }
     
     public static Block register(String name, Block block) {

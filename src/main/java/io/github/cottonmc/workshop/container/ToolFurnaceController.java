@@ -1,4 +1,4 @@
-package io.github.cottonmc.workshop.controller;
+package io.github.cottonmc.workshop.container;
 
 import io.github.cottonmc.cotton.gui.CottonScreenController;
 import io.github.cottonmc.cotton.gui.widget.*;

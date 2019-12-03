@@ -18,7 +18,7 @@ public class BindingPropertyGetter implements ItemPropertyGetter {
     public float call(ItemStack stack, @Nullable World world, @Nullable LivingEntity livingEntity) {
         if (!stack.hasTag()) return 0F;
         CompoundTag tag = stack.getTag();
-        if (!tag.containsKey("Binding", NbtType.STRING)) return 0F;
+        if (!tag.contains("Binding", NbtType.STRING)) return 0F;
         String binding = tag.getString("Binding");
         switch(binding) {
             case "vine":

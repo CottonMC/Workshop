@@ -26,8 +26,8 @@ public class MoldType {
 
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("identifier", identifier.toString())
-        .toString();
+            .add("identifier", identifier.toString())
+            .toString();
     }
 
     @Nullable

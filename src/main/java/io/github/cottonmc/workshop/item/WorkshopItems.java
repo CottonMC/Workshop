@@ -2,29 +2,30 @@ package io.github.cottonmc.workshop.item;
 
 import io.github.cottonmc.workshop.Workshop;
 import io.github.cottonmc.workshop.item.bound.*;
+import io.github.cottonmc.workshop.item.carver.WoodenKnifeCarver;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.item.*;
+import net.minecraft.loot.UniformLootTableRange;
+import net.minecraft.loot.condition.InvertedLootCondition;
+import net.minecraft.loot.condition.MatchToolLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.loot.UniformLootTableRange;
-import net.minecraft.world.loot.condition.InvertedLootCondition;
-import net.minecraft.world.loot.condition.MatchToolLootCondition;
-import net.minecraft.world.loot.entry.ItemEntry;
 
 public class WorkshopItems {
 
 	//raw materials
-	public static Item GRASS_BLADES = register("grass_blades", new Item(defaultSettings()));
-	public static Item VINE_BUNDLE = register("vine_bundle", new Item(defaultSettings()));
-	public static Item ROCK_CHUNK = register("rock_chunk", new Item(defaultSettings()));
-	public static Item CLAY_BLOB = register("clay_blob", new Item(defaultSettings()));
+	public static final Item GRASS_BLADES = register("grass_blades", new Item(defaultSettings()));
+	public static final Item VINE_BUNDLE = register("vine_bundle", new Item(defaultSettings()));
+	public static final Item ROCK_CHUNK = register("rock_chunk", new Item(defaultSettings()));
+	public static final Item CLAY_BLOB = register("clay_blob", new Item(defaultSettings()));
 
 	//semi-processed materials
-	public static Item GRASS_ROPE = register("grass_rope", new Item(defaultSettings()));
-	public static Item VINE_ROPE = register("vine_rope", new Item(defaultSettings()));
+	public static final Item GRASS_ROPE = register("grass_rope", new Item(defaultSettings()));
+	public static final Item VINE_ROPE = register("vine_rope", new Item(defaultSettings()));
 
 	//tool ingredients
 	public static Item WOOD_HANDLE;
@@ -34,13 +35,15 @@ public class WorkshopItems {
 	public static Item WOOD_HOE_HEAD;
 
 	//tools
-	public static Item WOOD_PICK = register("wood_pickaxe", new BoundPickaxeItem(ToolMaterials.WOOD, defaultSettings()));
-	public static Item WOOD_AXE = register("wood_axe", new BoundAxeItem(ToolMaterials.WOOD, defaultSettings()));
-	public static Item WOOD_SHOVEL = register("wood_shovel", new BoundShovelItem(ToolMaterials.WOOD, defaultSettings()));
-	public static Item WOOD_HOE = register("wood_hoe", new BoundHoeItem(ToolMaterials.WOOD, defaultSettings()));
+	public static final Item WOOD_PICK = register("wood_pickaxe", new BoundPickaxeItem(ToolMaterials.WOOD, defaultSettings()));
+	public static final Item WOOD_AXE = register("wood_axe", new BoundAxeItem(ToolMaterials.WOOD, defaultSettings()));
+	public static final Item WOOD_SHOVEL = register("wood_shovel", new BoundShovelItem(ToolMaterials.WOOD, defaultSettings()));
+	public static final Item WOOD_HOE = register("wood_hoe", new BoundHoeItem(ToolMaterials.WOOD, defaultSettings()));
+
+	public static final Item WOOD_KNIFE = register("wood_knife", new WoodenKnifeCarver(ToolMaterials.WOOD, defaultSettings().maxCount(1).maxDamage(20)));
 
 	//misc
-	public static Item STONE_TONGS = register("stone_tongs", new TongsItem(defaultSettings().maxDamage(120)));
+	public static final Item STONE_TONGS = register("stone_tongs", new TongsItem(defaultSettings().maxDamage(120)));
 
 	public static final ItemGroup WORKSHOP_GROUP = FabricItemGroupBuilder.build(Workshop.id("main_group"), () -> new ItemStack(GRASS_ROPE));
 	public static final ItemGroup WORKSHOP_MOLDS_GROUP = FabricItemGroupBuilder.build(Workshop.id("mold_group"), () -> new ItemStack(WorkshopMoldItems.WET_AXE_HEAD));

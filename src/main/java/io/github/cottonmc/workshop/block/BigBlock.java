@@ -7,7 +7,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
-import net.minecraft.world.ViewableWorld;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -50,7 +50,7 @@ public abstract class BigBlock extends Block {
 	}
 
 	@Override
-	public boolean canPlaceAt(BlockState state, ViewableWorld world, BlockPos pos) {
+	public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
 		Direction dir = getFacingProperty() == null? Direction.NORTH : state.get(getFacingProperty());
 		for (Vec3i offset : getRotatedVectors(dir)) {
 			BlockPos blocker = pos.add(offset);

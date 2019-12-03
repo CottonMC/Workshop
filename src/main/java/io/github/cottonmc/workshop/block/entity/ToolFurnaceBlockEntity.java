@@ -1,6 +1,6 @@
 package io.github.cottonmc.workshop.block.entity;
 
-import io.github.cottonmc.workshop.controller.ToolFurnaceController;
+import io.github.cottonmc.workshop.container.ToolFurnaceController;
 import io.github.cottonmc.workshop.recipe.toolfurnace.ToolFurnaceRecipe;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.container.BlockContext;
