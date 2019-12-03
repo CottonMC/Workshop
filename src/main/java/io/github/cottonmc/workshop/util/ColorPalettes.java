@@ -15,6 +15,4 @@ public class ColorPalettes {
 
 	//gems
 	public static final int DIAMOND = 0x40c2cf;
-
-
 }

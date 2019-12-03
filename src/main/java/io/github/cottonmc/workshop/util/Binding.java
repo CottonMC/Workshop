@@ -2,6 +2,7 @@ package io.github.cottonmc.workshop.util;
 
 import net.minecraft.util.StringIdentifiable;
 
+@Deprecated
 public enum Binding implements StringIdentifiable {
 	GRASS(ColorPalettes.GRASS_ROPE, "grass"),
 	VINE(ColorPalettes.VINE_ROPE, "vine"),

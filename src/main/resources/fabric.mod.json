@@ -23,7 +23,7 @@
       "io.github.cottonmc.workshop.Workshop"
     ],
     "client":[
-      "io.github.cottonmc.workshop.WorkshopClient"
+      "io.github.cottonmc.workshop.client.WorkshopClient"
     ]
   },
   "mixins": [

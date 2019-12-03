@@ -9,6 +9,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -39,10 +40,10 @@ public class BlockerBlock extends Block {
 	}
 
 	@Override
-	public boolean activate(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 		//TODO: support for more locations
-		BlockHitResult relocHit = new BlockHitResult(((HitPosGetter)hit).workshop_getPos(), hit.getSide(), hit.getBlockPos().down(), hit.method_17781());
-		return world.getBlockState(pos.down()).activate(world, player, hand, relocHit);
+		BlockHitResult relocHit = new BlockHitResult(((HitPosGetter)hit).workshop_getPos(), hit.getSide(), hit.getBlockPos().down(), hit.isInsideBlock());
+		return world.getBlockState(pos.down()).onUse(world, player, hand, relocHit);
 	}
 
 	@Override

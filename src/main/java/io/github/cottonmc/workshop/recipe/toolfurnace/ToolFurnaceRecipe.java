@@ -1,4 +1,4 @@
-package io.github.cottonmc.workshop.recipe;
+package io.github.cottonmc.workshop.recipe.toolfurnace;
 
 import io.github.cottonmc.workshop.block.entity.ToolFurnaceBlockEntity;
 import net.minecraft.item.ItemStack;

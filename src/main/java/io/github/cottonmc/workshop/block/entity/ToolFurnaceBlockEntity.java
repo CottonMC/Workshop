@@ -1,16 +1,12 @@
 package io.github.cottonmc.workshop.block.entity;
 
-import io.github.cottonmc.workshop.block.WorkshopBlocks;
-import io.github.cottonmc.workshop.block.controller.ToolFurnaceController;
-import io.github.cottonmc.workshop.recipe.ToolFurnaceRecipe;
-import net.minecraft.block.entity.BlockEntity;
+import io.github.cottonmc.workshop.container.ToolFurnaceController;
+import io.github.cottonmc.workshop.recipe.toolfurnace.ToolFurnaceRecipe;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.container.BlockContext;
 import net.minecraft.container.Container;
-import net.minecraft.container.NameableContainerProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
@@ -18,9 +14,7 @@ import net.minecraft.recipe.RecipeFinder;
 import net.minecraft.recipe.RecipeInputProvider;
 import net.minecraft.recipe.RecipeUnlocker;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.DefaultedList;
-import net.minecraft.util.Nameable;
 import net.minecraft.util.Tickable;
 import net.minecraft.util.math.Direction;
 
@@ -35,7 +29,7 @@ public class ToolFurnaceBlockEntity extends LockableContainerBlockEntity impleme
 	public static final int INV_SIZE = OUTPUT + 1;
 
 	public ToolFurnaceBlockEntity() {
-		super(WorkshopBlocks.TOOL_FURNACE_BE);
+		super(WorkshopBlockEntities.TOOL_FURNACE_BE);
 		this.slots = DefaultedList.ofSize(INV_SIZE, ItemStack.EMPTY);
 		this.burnTime = 0;
 		this.meltTime = 0;
